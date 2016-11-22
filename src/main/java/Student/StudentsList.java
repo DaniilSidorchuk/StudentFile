@@ -1,4 +1,6 @@
+package Student;
 
+import Student.Student;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -45,7 +47,7 @@ public class StudentsList {
         bufferedWriter.write("<Students>");
         bufferedWriter.newLine();
         for (int i = 0; i < student.size(); i++) {
-            bufferedWriter.write("<Student>");
+            bufferedWriter.write("<Student.Student>");
             bufferedWriter.newLine();
             bufferedWriter.write("<LastName>" + student.get(i).getLastName() + "</LastName>");
             bufferedWriter.newLine();
@@ -53,7 +55,7 @@ public class StudentsList {
             bufferedWriter.newLine();
             bufferedWriter.write("<Age>" + student.get(i).getAge() + "</Age>");
             bufferedWriter.newLine();
-            bufferedWriter.write("</Student>");
+            bufferedWriter.write("</Student.Student>");
             bufferedWriter.newLine();
         }
         bufferedWriter.write("</Students>");
