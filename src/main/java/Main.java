@@ -6,7 +6,6 @@ public class Main {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Student student1 = new Student("Allen", "Barry", 25);
-        student1.setN(3);
 
         System.out.println("Before serialization:");
         System.out.println(student1);
@@ -20,7 +19,7 @@ public class Main {
 
       Student  student2 = (Student) objectInputStream.readObject();
         System.out.println("After deserialization");
-        System.out.println(student1);
+        System.out.println(student2);
 
     }
 

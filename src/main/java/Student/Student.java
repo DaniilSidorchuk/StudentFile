@@ -12,7 +12,10 @@ public class Student implements Externalizable{
     private String lastName;
     private String firstName;
     private int age;
-    private int n;
+    private  int n=3;
+
+    public Student() {
+    }
 
     public Student(String lastName, String firstName, int age) {
         this.lastName = lastName;
@@ -20,15 +23,6 @@ public class Student implements Externalizable{
         this.age = age;
     }
 
-    public void setN(int n) {
-        if (this.n == 0){
-            this.n = n;
-        }
-    }
-
-    public int getN() {
-        return n;
-    }
 
     public String getLastName() {
         return lastName;
@@ -53,12 +47,9 @@ public class Student implements Externalizable{
     }
 
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        String encryptedLastName = (String)in.readObject();
-        lastName = decrypting(encryptedLastName);
-        String encryptedFirstName = (String)in.readObject();
-        firstName = decrypting(encryptedFirstName);
-        int encryptedAge = in.readInt();
-        age = (encryptedAge / -100) - n*n;
+        lastName = decrypting((String)in.readObject());
+        firstName = decrypting((String)in.readObject());
+        age = (in.readInt() / -100) - n*n;
     }
 
     private String encrypting(String name){
@@ -97,13 +88,14 @@ public class Student implements Externalizable{
                     if (j >= n){
                         word[i] = letters[j-n];
                     }else{
-                        word[i] = letters[letters.length-n+j+1];
+                        word[i] = letters[letters.length-n+j];
                     }
                     break;
                 }
             }
         }
         name = valueOf(word[0]);
+        name = name.toUpperCase();
         for (int i = 1; i < word.length; i++) {
             name = name + word[i];
         }
